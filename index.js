@@ -65,7 +65,7 @@ const questions = [
     // Email Address
     {
         type: 'input',
-        name: 'pemail',
+        name: 'email',
         message: 'What is your email address?'
     }
 ];
