@@ -1,7 +1,7 @@
 // Variables and Dependencies
-const fs = require("fs");
-const inquirer = require("inquirer");
-const generateMarkdown = require("./utils/generateMarkdown");
+const fs = require('fs');
+const inquirer = require('inquirer');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 // Questions Array
 const questions = [
@@ -76,11 +76,23 @@ function writeToFile(fileName, data) {
         if (err) {
             return console.log(err)
         }
+        console.log('README.md was successfully generated!');
     });
 }
 
-// TODO: Create a function to initialize app
-function init() {}
+// Function to get License Badge URL
+function getLicense(license) {
+
+}
+
+// Function to initialize app
+function init() {
+    inquirer.createPromptModule(questions).then((data) => {
+        console.log(JSON.stringify(data, null, " "));
+        data.licenseBadge = getLicense(data.license);
+        writeToFile("./example/readme.md", data);
+    });
+}
 
 // Function call to initialize app
 init();
